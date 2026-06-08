@@ -79,19 +79,24 @@ REMOTETYPE(fileglob,
 
 REMOTETYPE(fileproc,
     REMOTE_FIELD(fileglob, f_fglob,
-        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x10)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x18)
     );
 )
 
 REMOTETYPE(filedesc,
     REMOTE_FIELD(kpointer_t, fd_ofiles,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x30)
     );
     REMOTE_FIELD(vnode_t, fd_rdir,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x38)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x60)
     );
     REMOTE_FIELD(vnode_t, fd_cdir,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x38)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x58)
     );
 )
 
@@ -102,36 +107,42 @@ REMOTETYPE(apple_protect_pager_t, // extends from memory_object_t
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x38)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x38)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x30)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x30)
     );
     REMOTE_FIELD(kuint64_t, backing_offset,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x38)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x38)
     );
     REMOTE_FIELD(kuint64_t, crypto_backing_offset,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x40)
     );
     REMOTE_FIELD(kuint64_t, crypto_start,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x50)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x50)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x50)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x48)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x48)
     );
     REMOTE_FIELD(kuint64_t, crypto_end,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x58)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x58)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x58)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x50)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x50)
     );
     REMOTE_FIELD(kpointer_t, crypt_info,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x60)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x60)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x60)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x58)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x58)
     );
     
 )
@@ -151,12 +162,14 @@ REMOTETYPE(vm_object_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x48)
     );
     REMOTE_FIELD(_memory_object_t, pager,   // can be found in functions with reference to vnode_pager_ops (usually doing object->pager->mo_pager_ops))
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x48)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x50)
     );
 )
 
@@ -166,39 +179,46 @@ REMOTETYPE(_vm_map_entry,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x0)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x0)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x0)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x0)
     );
     REMOTE_FIELD(_vm_map_entry, link_next,      // infered from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x8)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x8)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x8)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x8)
     );
     REMOTE_FIELD(kuint64_t, start,              // infered from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x10)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x10)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x10)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x10)
     );
     REMOTE_FIELD(kuint64_t, end,                // infered from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x18)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x18)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x18)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x18)
     );
     REMOTE_FIELD(vm_object_t, vme_object,       // can be found in kmem_realloc (identifiable with panic string)       
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x38)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x38)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x38)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x38)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x38)
     );
     REMOTE_FIELD(kuint64_t, vme_offset,         // can be found in kmem_alloc's VME_OFFSET_SET pattern
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x40)
     );
     REMOTE_FIELD(kuint32_t, vme_flags,          // inferred from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x48)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x48)
     );
 )
 
@@ -208,17 +228,20 @@ REMOTETYPE(_vm_map_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x10)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x10)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x10)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x10)
     );
     REMOTE_FIELD(_vm_map_entry, link_next,      // infered from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x18)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x18)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x18)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x18)
     );
     REMOTE_FIELD(kuint32_t, nentries,           // can be found in vm_map_create_options (identifiable using panic string)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x30)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x30)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x30)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x30)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x30)
     );
     REMOTE_FIELD(kuint32_t, page_shift,         // can be found in vm_map_create_options (identifiable using panic string)
                                                 // can also be cross-validated with vm_map_page_mask() (also presents in mremap_encrypted)
@@ -226,12 +249,14 @@ REMOTETYPE(_vm_map_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x40)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x40)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x40)
     );
     REMOTE_FIELD(kpointer_t, pmap,              // can be found in vm_map_create_options (identifiable using panic string)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x48)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x48)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x48)
     );
 )
 
@@ -242,25 +267,28 @@ REMOTETYPE(_thread_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x320)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x348)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x408)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x488)
     );
 )
 REMOTETYPE(_task_t,
     REMOTE_FIELD(_vm_map_t, _map,               // can be found in task_init() (identifiable with panic string)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x28)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x28)
-        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x28)
-        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x20)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x30)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x28)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x48)
     );
 )
 
 REMOTETYPE(uthread,
-    REMOTE_FIELD(_thread_t, uu_thread,          // can't be easily found without symbol...
-        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x120)
+    REMOTE_FIELD(_thread_t, uu_thread,          // can't be easily found without symbol... Also no longer exists on xnu-8019 but does on xnu-7195
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0xe8)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0xe8)
     );
 )
 
 REMOTETYPE(proc_t,
-    REMOTE_FIELD(proc_t, nextproc,              // from struct definition
+    REMOTE_FIELD(proc_t, nextproc,              // from struct definition, was unable to find for 15.0
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0)
     );
@@ -268,6 +296,7 @@ REMOTETYPE(proc_t,
     REMOTE_FIELD(_task_t, task,                 // from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0x10)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0x10)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x10)
     );
 
     REMOTE_FIELD(kuint32_t, p_pid,
@@ -275,6 +304,7 @@ REMOTETYPE(proc_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_0, 0x68)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0_b1, 0x68)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x68)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x68)
     );
 
     REMOTE_FIELD(uthread, p_uthlist,            // can be found in bsd_init
@@ -282,12 +312,14 @@ REMOTETYPE(proc_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x98)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0_b1, 0x98)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x98)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0x98)
     );
 
-    REMOTE_FIELD(kpointer_t, p_ucred,            // can be found in bsd_init
+    REMOTE_FIELD(kpointer_t, p_ucred,            // can be found in bsd_init, now in proc_ro for 15.0 TODO
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_4, 0x100)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_5, 0x100)
-        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0x100)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0xf0)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0xf0)
     );
 
     REMOTE_FIELD(filedesc, p_fd,
@@ -295,6 +327,7 @@ REMOTETYPE(proc_t,
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_13_0, 0x108)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0_b1, 0xf8)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_7, 0xf8)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0xd8)
     );
 )
 
