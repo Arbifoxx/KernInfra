@@ -288,9 +288,10 @@ REMOTETYPE(uthread,
 )
 
 REMOTETYPE(proc_t,
-    REMOTE_FIELD(proc_t, nextproc,              // from struct definition, was unable to find for 15.0
+    REMOTE_FIELD(proc_t, nextproc,              // from struct definition
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_12_0, 0)
         VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_14_0, 0)
+        VERSION_OFF(kCFCoreFoundationVersionNumber_iOS_15_0, 0) // Assuming this is le_next, then 0 would make sense
     );
 
     REMOTE_FIELD(_task_t, task,                 // from struct definition
